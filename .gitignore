@@ -1,23 +1,42 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# compiled output
+dist/
+node_modules/
+bower_components/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# ignore lock file
+yarn.lock
+package-lock.json
 
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
+
+# Temporary files
+temp
+/.temp
+
+# Coverage reports
+coverage
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+.idea
+*.iml
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+
+# OS metadata
+.DS_Store
+Thumbs.db
