@@ -1,11 +1,24 @@
-import styles from './CharacterList.module.scss'
+import {useEffect} from "react";
 import {Link} from "react-router-dom";
+import {useAppDispatch, useAppSelector} from "../../common/hooks";
+import {selectCharacters} from "./slice";
+import * as thunks from "./thunks";
+import styles from './CharacterList.module.scss'
+import {CHARACTERS_ALL} from "./models";
+import {AppStateItem} from "../../common/utils";
 
 const CharacterList = () => {
+  const model = useAppSelector(selectCharacters)[CHARACTERS_ALL] // as { id: string; name: string; image: string; }[];
+  console.log('CharacterList: model=', model);
+  const dispatch = useAppDispatch();
 
+  //const characters =
 
-  const characters: { id: string; name: string; image: string; }[] = [];
-
+  useEffect(() => {
+    if(!model.loaded) {
+      dispatch(thunks.getAll())
+    }
+  }, [])
   const handleLoadMore = () => { }
 
   return (
@@ -20,17 +33,14 @@ const CharacterList = () => {
         </p>
 
         <ul className={styles.grid}>
-          {characters.map((result: { id: string; name: string; image: string; }) => {
-            const {id, name, image} = result;
-            return (
-              <li key={id} className="card">
-                <Link to={id}>
-                  <img src={image} alt={`${name} Thumbnail`}/>
-                  <h3>{name}</h3>
-                </Link>
-              </li>
-            )
-          })}
+          {model.loaded && model.payload.results.map(({id, name, image}: { id: string; name: string; image: string; }) =>
+            <li key={id} className="card">
+              <Link to={id}>
+                <img src={image} alt={`${name} Thumbnail`}/>
+                <h3>{name}</h3>
+              </Link>
+            </li>
+          )}
         </ul>
         <p>
           <button onClick={handleLoadMore}>Load More</button>

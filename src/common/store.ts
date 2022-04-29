@@ -1,10 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import characterReducer from '../pages/character-list/slice'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    characters: characterReducer,
   },
+  devTools: true,
 });
 
 export type AppDispatch = typeof store.dispatch;
