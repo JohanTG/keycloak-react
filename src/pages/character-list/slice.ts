@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import {extraReducers} from './thunks';
-import {RootState} from "../../common/store";
-import {createModel, AppState} from "../../common/utils";
+import {RootState} from "../../redux/store";
+import {createModel, AppState} from "../../redux/utils";
 import {CHARACTERS_ALL} from "./models";
 
 
