@@ -4,21 +4,18 @@ import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {selectCharacters} from "./slice";
 import * as thunks from "./thunks";
 import styles from './CharacterList.module.scss'
-import {CHARACTERS_ALL} from "./models";
-import {AppStateItem} from "../../redux/utils";
 
 const CharacterList = () => {
-  const model = useAppSelector(selectCharacters)[CHARACTERS_ALL] // as { id: string; name: string; image: string; }[];
-  console.log('CharacterList: model=', model);
+  const model = useAppSelector(selectCharacters);
   const dispatch = useAppDispatch();
-
-  //const characters =
+  const characters = (model.payload?.results ?? []) as { id: string; name: string; image: string; }[];
 
   useEffect(() => {
-    if(!model.loaded) {
+    if(!model.loaded && !model.loading) {
       dispatch(thunks.getAll())
     }
-  }, [])
+  }, [model, dispatch])
+
   const handleLoadMore = () => { }
 
   return (
@@ -33,7 +30,7 @@ const CharacterList = () => {
         </p>
 
         <ul className={styles.grid}>
-          {model.loaded && model.payload.results.map(({id, name, image}: { id: string; name: string; image: string; }) =>
+          {model.loaded && characters.map(({id, name, image}) =>
             <li key={id} className="card">
               <Link to={id}>
                 <img src={image} alt={`${name} Thumbnail`}/>

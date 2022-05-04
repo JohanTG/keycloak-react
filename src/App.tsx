@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Counter } from './features/counter/Counter';
 import './App.css';
 import CharacterList from "./pages/character-list/CharacterList";
 import Layout from "./pages/Layout";
@@ -17,7 +16,6 @@ function App() {
             </Route>
           </Routes>
         </Router>
-        <Counter />
       </header>
     </div>
   );
