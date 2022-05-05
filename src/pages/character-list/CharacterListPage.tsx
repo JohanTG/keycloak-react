@@ -1,9 +1,10 @@
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {selectCharacters} from "./selectors";
 import * as thunks from "./thunks";
 import styles from './CharacterListPage.module.scss'
 import CharacterList from "./components/CharacterList/CharacterList";
+import {Helmet} from "react-helmet-async";
 
 const CharacterListPage = () => {
   const model = useAppSelector(selectCharacters);
@@ -20,6 +21,11 @@ const CharacterListPage = () => {
 
   return (
     <div className={styles.container}>
+      <Helmet>
+        <title>Rick and Morty Wiki - All characters</title>
+        <meta name="description" content="All characters of 'Rick and Morty' TV series" />
+      </Helmet>
+
       <main className={styles.main}>
         <h1 className={styles.title}>
           Wubba Lubba Dub Dub!

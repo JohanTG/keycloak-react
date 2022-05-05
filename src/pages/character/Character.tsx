@@ -2,8 +2,9 @@ import { Link, useParams } from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
 import {selectCharacterOpened} from "../character-list/selectors";
 import styles from './Character.module.scss'
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import * as thunks from "../character-list/thunks";
+import {Helmet} from "react-helmet-async";
 
 const Character = () => {
   const {id: characterId} = useParams();
@@ -21,6 +22,10 @@ const Character = () => {
 
   return (
     <div className={styles.container}>
+      <Helmet>
+        <title>{`Rick and Morty Wiki - ${name}`}</title>
+        <meta name="description" content={`'Rick and Morty' TV series: ${name} character`} />
+      </Helmet>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
