@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Layout from "./pages/Layout";
-import CharacterList from "./pages/character-list/CharacterList";
+import CharacterListPage from "./pages/character-list/CharacterListPage";
 import Character from "./pages/character/Character";
 
 function App() {
@@ -12,8 +12,8 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<Layout/>} >
-              <Route index element={<CharacterList/>} />
-              <Route path="characters" element={<CharacterList/>} />
+              <Route index element={<CharacterListPage/>} />
+              <Route path="characters" element={<CharacterListPage/>} />
               <Route path="/characters/:id" element={<Character/>} />
               <Route
                 path="*"
