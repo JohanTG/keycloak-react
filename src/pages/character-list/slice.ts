@@ -1,12 +1,12 @@
-import { createSlice, createSelector } from '@reduxjs/toolkit'
-import {extraReducers} from './thunks';
-import {RootState} from "../../redux/store";
-import {createModel, AppState} from "../../redux/utils";
-import {CHARACTERS_ALL} from "./models";
+import { createSlice } from '@reduxjs/toolkit'
+import { extraReducers } from './thunks';
+import { createModel } from "../../redux/utils";
+import {CHARACTER_OPENED, CHARACTERS_ALL} from "./models";
 
 
 const initialState: any = {
   ...createModel(CHARACTERS_ALL),
+  ...createModel(CHARACTER_OPENED),
 };
 
 export const characterSlice = createSlice({
@@ -14,25 +14,6 @@ export const characterSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers,
-/*
-  extraReducers: (builder) => {
-    builder.addCase(thunks.getAll.fulfilled, (state, action) => {
-      console.log('characterSlice.getAll: action=', action);
-      return [...action.payload.results];
-    })
-    builder.addCase(thunks.getById.fulfilled, (state, action) => {
-      return [...action.payload];
-    })
-  },
- */
 })
-
-export const selectAllCharacters = (state: RootState) : AppState => state.characters;
-
-export const selectCharacters = createSelector(
-  selectAllCharacters,
-  characters => characters[CHARACTERS_ALL]
-)
-
 
 export default characterSlice.reducer;

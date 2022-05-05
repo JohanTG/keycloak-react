@@ -1,7 +1,7 @@
 import {useEffect} from "react";
-import {Link} from "react-router-dom";
+import {Link, Outlet} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../redux/hooks";
-import {selectCharacters} from "./slice";
+import {selectCharacters} from "./selectors";
 import * as thunks from "./thunks";
 import styles from './CharacterList.module.scss'
 
@@ -32,7 +32,7 @@ const CharacterList = () => {
         <ul className={styles.grid}>
           {model.loaded && characters.map(({id, name, image}) =>
             <li key={id} className="card">
-              <Link to={id}>
+              <Link to={`/characters/${id}`}>
                 <img src={image} alt={`${name} Thumbnail`}/>
                 <h3>{name}</h3>
               </Link>
@@ -42,6 +42,7 @@ const CharacterList = () => {
         <p>
           <button onClick={handleLoadMore}>Load More</button>
         </p>
+        <Outlet />
       </main>
     </div>
   )

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import CharacterService from '../../services/character.service';
 import {createExtraReducer} from "../../redux/utils";
-import {CHARACTERS_ALL} from "./models";
+import {CHARACTER_OPENED, CHARACTERS_ALL} from "./models";
 
 
 export const getAll = createAsyncThunk(
@@ -19,7 +19,7 @@ export const getAll = createAsyncThunk(
 
 export const getById = createAsyncThunk(
   "characters/getById",
-  async ({ id }: {id: number}) => {
+  async (id: number) => {
     const res = await CharacterService.get(id);
     return res.data;
   }
@@ -27,4 +27,5 @@ export const getById = createAsyncThunk(
 
 export const extraReducers = {
   ...createExtraReducer(getAll, CHARACTERS_ALL),
+  ...createExtraReducer(getById, CHARACTER_OPENED),
 }
