@@ -31,11 +31,11 @@ const Character = () => {
           { name }
         </h1>
 
-        <div className="profile">
-          <div className="profile-image">
+        <div className={styles.profile}>
+          <div className={styles.image}>
             <img src={image} alt={name} />
           </div>
-          <div className="profile-details">
+          <div className={styles.details}>
             <h2>Character Details</h2>
             <ul>
               <li>
@@ -60,9 +60,10 @@ const Character = () => {
           </div>
         </div>
 
-        <p className="back">
+        <p className={styles.back}>
+          <hr/>
           <Link to="/characters">
-              Back to All Characters
+            &#129120;	Back to All Characters
           </Link>
         </p>
       </main>
