@@ -1,13 +1,12 @@
 import React, {useEffect} from "react";
-import {useAppDispatch, useAppSelector} from "../../redux/hooks";
-import {selectCharacters} from "./selectors";
-import * as thunks from "./thunks";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import {selectors, thunks} from "../../store/characters";
 import styles from './CharacterListPage.module.scss'
 import CharacterList from "./components/CharacterList/CharacterList";
 import {Helmet} from "react-helmet-async";
 
 const CharacterListPage = () => {
-  const model = useAppSelector(selectCharacters);
+  const model = useAppSelector(selectors.selectCharacters);
   const dispatch = useAppDispatch();
   const characters = (model.payload?.results ?? []) as { id: number; name: string; image: string; }[];
 

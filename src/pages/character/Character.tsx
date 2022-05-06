@@ -1,15 +1,14 @@
 import { Link, useParams } from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../redux/hooks";
-import {selectCharacterOpened} from "../character-list/selectors";
-import styles from './Character.module.scss'
 import React, {useEffect} from "react";
-import * as thunks from "../character-list/thunks";
 import {Helmet} from "react-helmet-async";
+import {selectors, thunks} from "../../store/characters";
+import {useAppDispatch, useAppSelector} from "../../store/hooks";
+import styles from './Character.module.scss'
 
 const Character = () => {
   const {id: characterId} = useParams();
 
-  const model = useAppSelector(selectCharacterOpened);
+  const model = useAppSelector(selectors.selectCharacterOpened);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

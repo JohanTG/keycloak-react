@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import CharacterService from '../../services/character.service';
-import {createExtraReducer} from "../../redux/utils";
+import {createExtraReducer} from "../utils";
 import {CHARACTER_OPENED, CHARACTERS_ALL} from "./models";
 
 

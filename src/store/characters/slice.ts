@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { extraReducers } from './thunks';
-import { createModel } from "../../redux/utils";
+import { createModel } from "../utils";
 import {CHARACTER_OPENED, CHARACTERS_ALL} from "./models";
 
 
