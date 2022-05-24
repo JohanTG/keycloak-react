@@ -6,9 +6,9 @@ import {CHARACTER_OPENED, CHARACTERS_ALL} from "./models";
 
 export const getAll = createAsyncThunk(
   "characters/getAll",
-  async (...args) => {
+  async (page: number, ...args) => {
     try{
-      const res = await CharacterService.getAll();
+      const res = await CharacterService.getAll(page);
       return res.data;
     } catch (e: any) {
       const thunkApi = args[args.length-2];

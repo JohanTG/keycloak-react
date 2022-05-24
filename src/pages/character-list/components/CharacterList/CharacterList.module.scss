@@ -21,6 +21,7 @@ $color-primary: blueviolet;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   max-width: 200px;
+  max-height: 270px;
 
   h3 {
     margin: 0 0 1rem 0;
@@ -33,7 +34,8 @@ $color-primary: blueviolet;
     line-height: 1.5;
   }
   img {
-    max-width: 200px;
+    width: 200px;
+    height: 200px;
   }
   a {
     color: $color-primary;
